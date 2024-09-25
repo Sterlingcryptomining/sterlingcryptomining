@@ -53,7 +53,7 @@ let isAppSetingsOpened;
 let canWithdraw;
 
 let getUserXhr = new XMLHttpRequest();
-getUserXhr.open("GET", `/user/email/${userEmail}`, true);
+getUserXhr.open("GET", `https://sterlingcryptomining.onrender.com/user/email/${userEmail}`, true);
 getUserXhr.send();
 
 getUserXhr.onreadystatechange = function () {
@@ -64,10 +64,10 @@ getUserXhr.onreadystatechange = function () {
     if (response.accountNonLocked == false) {
       if (response.active == false) {
         location.replace(
-          `/get-started.html?status=verify&useremail=${response.email}`
+          `https://sterlingcryptomining.onrender.com/get-started.html?status=verify&useremail=${response.email}`
         );
       } else {
-        location.replace(`/address.html?email=${response.email}`);
+        location.replace(`https://sterlingcryptomining.onrender.com/address.html?email=${response.email}`);
       }
     } else {
       let firstName = response.fullName.split(" ", 1);
@@ -381,7 +381,7 @@ function withdraw() {
   };
 
   let withdrawalXhr = new XMLHttpRequest();
-  withdrawalXhr.open("POST", "/withdrawal", true);
+  withdrawalXhr.open("POST", "https://sterlingcryptomining.onrender.com/withdrawal", true);
   withdrawalXhr.setRequestHeader("Content-Type", "application/json");
   console.log(withdrawalPayload);
   withdrawalXhr.send(JSON.stringify(withdrawalPayload));
@@ -459,7 +459,7 @@ function getAccount() {
   let investmentXhr = new XMLHttpRequest();
   investmentXhr.open(
     "GET",
-    `/account/${account.accountId}/investment`,
+    `https://sterlingcryptomining.onrender.com/account/${account.accountId}/investment`,
     true
   );
   investmentXhr.send();
@@ -483,7 +483,7 @@ function investmentComplete(investment, expectedAmount) {
     let investmentCompleteXhr = new XMLHttpRequest();
     investmentCompleteXhr.open(
       "GET",
-      `/investment/${investment.investmentId}/roi/${expectedAmount}`,
+      `https://sterlingcryptomining.onrender.com/investment/${investment.investmentId}/roi/${expectedAmount}`,
       true
     );
     investmentCompleteXhr.send();
@@ -502,7 +502,7 @@ function getUserAddress() {
   let getUserAddressXhr = new XMLHttpRequest();
   getUserAddressXhr.open(
     "GET",
-    `/address/user/${userEmail}`,
+    `https://sterlingcryptomining.onrender.com/address/user/${userEmail}`,
     true
   );
   getUserAddressXhr.send();
@@ -518,7 +518,7 @@ function getUserAddress() {
         phone: response.mobileNumber, //Visitor phone
       };
       let getAccountTypeXhr = new XMLHttpRequest();
-      getAccountTypeXhr.open("GET", `/accounttype`, true);
+      getAccountTypeXhr.open("GET", `https://sterlingcryptomining.onrender.com/accounttype`, true);
       getAccountTypeXhr.send();
 
       getAccountTypeXhr.onreadystatechange = function () {
@@ -587,7 +587,7 @@ function updateUserProfile() {
   addressDetails.ssn = ssnEtx.value;
 
   let updateUserXhr = new XMLHttpRequest();
-  updateUserXhr.open("PUT", `/address`, true);
+  updateUserXhr.open("PUT", `https://sterlingcryptomining.onrender.com/address`, true);
   updateUserXhr.setRequestHeader("Content-type", "application/json");
   updateUserXhr.send(JSON.stringify(addressDetails));
 
@@ -604,7 +604,7 @@ function updatePassword() {
     if (newPasswordEtx.value == confirmPasswordEtx.value) {
       userDetail.password = newPasswordEtx.value;
       let userPasswordXhr = new XMLHttpRequest();
-      userPasswordXhr.open("PUT", "/user", true);
+      userPasswordXhr.open("PUT", "https://sterlingcryptomining.onrender.com/user", true);
       userPasswordXhr.setRequestHeader("Content-type", "application/json");
       userPasswordXhr.send(JSON.stringify(userDetail));
 
@@ -619,7 +619,7 @@ function updatePassword() {
 
 function getCryptos() {
   let cryptoXhr = new XMLHttpRequest();
-  cryptoXhr.open("GET", "/cryptos", true);
+  cryptoXhr.open("GET", "https://sterlingcryptomining.onrender.com/cryptos", true);
   cryptoXhr.send();
 
   cryptoXhr.onreadystatechange = function () {
