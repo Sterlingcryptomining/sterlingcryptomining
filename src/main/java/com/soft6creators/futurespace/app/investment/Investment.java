@@ -26,7 +26,7 @@ public class Investment {
 	private int percentage;
 	@ManyToOne
 	private Crypto currency;
-	public String getInvestmentId() {
+	public int getInvestmentId() {
 		return investmentId;
 	}
 	public void setInvestmentId(int investmentId) {
@@ -38,10 +38,10 @@ public class Investment {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	public String getInvestedAmount() {
+	public int getInvestedAmount() {
 		return investedAmount;
 	}
-	public void setInvestedAmount(String investedAmount) {
+	public void setInvestedAmount(int investedAmount) {
 		this.investedAmount = investedAmount;
 	}
 	
@@ -82,10 +82,10 @@ public class Investment {
 	public void setPercentage(int percentage) {
 		this.percentage = percentage;
 	}
-	public int getInvestmentPlan() {
+	public String getInvestmentPlan() {
 		return investmentPlan;
 	}
-	public void setInvestmentPlan(int investmentPlan) {
+	public void setInvestmentPlan(String investmentPlan) {
 		this.investmentPlan = investmentPlan;
 	}
 	
