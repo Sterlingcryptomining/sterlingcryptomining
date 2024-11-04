@@ -6,6 +6,7 @@ let account;
 let investmentValue;
 let tradeAccount;
 let withdrawal;
+let investment;
 
 let distinctMessageRoot = document.getElementById("distinct-message-root");
 let chatBox = document.getElementById("chat-box");
@@ -80,7 +81,7 @@ function deleteUser(userToDelete) {
   );
   deleteXhr.send();
 
-  deleteXhr.onreadystatechange = function() {
+  deleteXhr.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       location.reload();
     }
@@ -279,6 +280,7 @@ function getUserDetails() {
               1
             );
           } else {
+            investment = response;
             hasInvestment = response.active;
             document.getElementById("interest-account").innerText =
               response.investedAmount.toFixed(1);
@@ -363,7 +365,22 @@ function updateAccount(balance) {
     document.getElementById("info-modal").style.display = "none";
     if (this.readyState == 4 && this.status == 200) {
       let response = JSON.parse(this.response);
+      updateInvestment()
       getUserDetails();
+    }
+  };
+}
+
+function updateInvestment() {
+  investment.investmentPlan = accountLevel.value;
+  let updateInvestmentXhr = new XMLHttpRequest();
+  updateInvestmentXhr.open("PUT", "/investment", true);
+  updateInvestmentXhr.setRequestHeader("Content-type", "application/json");
+  updateInvestmentXhr.send(JSON.stringify(investment));
+  updateInvestmentXhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let response = JSON.parse(this.response);
+      console.log(response)
     }
   };
 }

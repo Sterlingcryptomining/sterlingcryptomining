@@ -25,6 +25,13 @@ public class InvestmentController {
 	public Investment addInvestment(@RequestBody Investment investment) {
 		return investmentService.addInvestment(investment);
 	}
+
+	@CrossOrigin(maxAge = 3600)
+	@RequestMapping(method = RequestMethod.PUT, value = "/investment")
+	public Investment updateInvestment(@RequestBody Investment investment) {
+		return investmentService.addInvestment(investment);
+	}
+	
 	
 	@CrossOrigin(maxAge = 3600)
 	@RequestMapping("/investment/{investmentId}")
