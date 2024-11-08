@@ -66,6 +66,6 @@ public class InvestmentController {
 	@CrossOrigin(maxAge = 3600)
 	@RequestMapping(method = RequestMethod.DELETE, value = "/investment/{investmentId}/delete")
 	public void deleteInvestment(@PathVariable int investmentId) {
-		investmentService.deleteInvestment(investment);
+		investmentService.deleteInvestment(investmentId);
 	}
 }
