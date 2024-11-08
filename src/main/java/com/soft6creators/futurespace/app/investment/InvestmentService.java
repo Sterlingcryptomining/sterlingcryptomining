@@ -80,4 +80,7 @@ public class InvestmentService {
         public List<Investment> getInvestments() {
 		return (List<Investment>) investmentRepository.findAll();
 	}
+	public void deleteInvestment(int investmentId) {
+		investmentRepository.deleteById(investmentId);
+	}
 }
