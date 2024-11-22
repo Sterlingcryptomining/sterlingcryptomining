@@ -322,35 +322,5 @@ public class UserService {
 			mailSenderService.sendEmail(toAddress, subject, content);
 	}
 
-	public List<Address> addUsers(List<Address> addresses) {
-		List<Address> userAddresses = new ArrayList<>();
-		Address userAddress2 = null;
-		for (Address address : addresses) {
-			User user = new User();
-			user.setFullName(address.getUser().getFullName());
-			user.setEmail(address.getUser().getEmail());
-			user.setPassword(address.getUser().getPassword());
-			user.setReferral(null);
-			user.setDate(address.getUser().getDate());
-
-			User addedUser = addUser(user);
-
-			Address userAddress = new Address();
-			userAddress.setUser(addedUser);
-			userAddress.setCountry(address.getCountry());
-			userAddress.setState(address.getState());
-			userAddress.setCity(address.getCity());
-			userAddress.setAddressLine1(address.getAddressLine1());
-			userAddress.setAddressLine2(address.getAddressLine2());
-			userAddress.setCitizen(address.isCitizen());
-			userAddress.setZipCode(address.getZipCode());
-			userAddress.setMobileNumber(address.getMobileNumber());
-			userAddress.setSource(address.getSource());
-
-			userAddress2 = addressService.addAddress(userAddress);
-
-		}
-		userAddresses.add(userAddress2);
-		return userAddresses;
-	}
+	
 }
