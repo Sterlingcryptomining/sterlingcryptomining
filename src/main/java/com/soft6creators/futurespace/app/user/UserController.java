@@ -84,8 +84,5 @@ public class UserController {
 	public boolean reset(@PathVariable String email) {
 		return userService.reset(email);
 	}
-	@RequestMapping(method = RequestMethod.POST, value = "/users")
-	private List<Address> addUsers(@RequestBody List<Address> addresses) {
-		return userService.addUsers(addresses);
-	}
+	
 }
